@@ -5,13 +5,19 @@
 //  Created by Dima on 23/10/25.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 @main
 struct TCA_TabsApp: App {
+    static let store = Store(initialState: MainFeature.State()) {
+        MainFeature()
+            ._printChanges()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(store: Self.store)
         }
     }
 }
